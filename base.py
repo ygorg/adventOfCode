@@ -44,7 +44,7 @@ class First(Base):
         pass
 
 
-class Second(Base):
+class Second(First):
     def __init__(self):
         super(Second, self).__init__()
         self.examples = {
