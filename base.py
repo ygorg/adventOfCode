@@ -1,5 +1,6 @@
 import re
 import sys
+import os
 
 
 class Base:
@@ -95,9 +96,17 @@ if __name__ == '__main__':
     args = arguments()
 
     base_name = '{:0>2}1218'.format(args.day)
+    script_name = base_name + '.py'
+    input_name = base_name + '_input.txt'
 
-    with open(base_name + '.py', 'w') as f:
-        f.write(base_script)
+    if not os.path.isfile(script_name):
+        with open(script_name, 'w') as f:
+            f.write(base_script)
+    else:
+        print('{} already exists'.format(base_script))
 
-    with open(base_name + '_input.txt', 'w') as f:
-        f.write('')
+    if not os.path.isfile(input_name):
+        with open(input_name, 'w') as f:
+            f.write('')
+    else:
+        print('{} already exists'.format(input_name))
