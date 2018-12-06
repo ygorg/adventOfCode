@@ -30,7 +30,8 @@ class Base:
         print('{}/{} good answer'.format(valid_example, len(self.examples)))
 
 
-base_script = """from base import Base
+base_script = """import logging
+from base import Base
 
 
 class First(Base):
@@ -74,8 +75,10 @@ if __name__ == '__main__':
     else:
         solver = First()
     if args.test:
+        logging.basicConfig(level=logging.DEBUG)
         solver.test_all()
     else:
+        logging.basicConfig(level=logging.INFO)
         solver.solve()
 """
 
