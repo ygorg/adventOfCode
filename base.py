@@ -36,7 +36,7 @@ from base import Base
 
 
 class First(Base):
-    def __init__(self):
+    def __init__(self, test):
         super(First, self).__init__()
         self.examples = {
             '': 0
@@ -47,8 +47,8 @@ class First(Base):
 
 
 class Second(First):
-    def __init__(self):
-        super(Second, self).__init__()
+    def __init__(self, test):
+        super(Second, self).__init__(test)
         self.examples = {
             '': 0
         }
@@ -72,9 +72,9 @@ if __name__ == '__main__':
     args = arguments()
 
     if args.second:
-        solver = Second()
+        solver = Second(args.test)
     else:
-        solver = First()
+        solver = First(args.test)
     if args.test:
         logging.basicConfig(level=logging.DEBUG)
         solver.test_all()
