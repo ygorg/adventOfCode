@@ -1,6 +1,7 @@
 import re
 import sys
 import os
+from datetime import datetime
 
 
 class Base:
@@ -42,7 +43,11 @@ class First(Base):
             '': 0
         }
 
-    def _solve(self, input):
+    def pre_treat(self, inp_):
+        return inp_.split('\n')
+
+    def _solve(self, inp_):
+        inp_ = self.pre_treat(inp_)
         pass
 
 
@@ -53,7 +58,8 @@ class Second(First):
             '': 0
         }
 
-    def _solve(self, input):
+    def _solve(self, inp_):
+        inp_ = First.pre_treat(self, inp_)
         pass
 
 
@@ -90,12 +96,14 @@ if __name__ == '__main__':
         parser = argparse.ArgumentParser(description='Script desc')
         parser.add_argument(
             'day', type=int, help='Day to create')
+        parser.add_argument(
+            'year', type=int, help='Year to create', nargs='?', default=datetime.now().strftime('%y'))
         args = parser.parse_args()
         return args
 
     args = arguments()
 
-    base_name = '{:0>2}1218'.format(args.day)
+    base_name = '{}12{:0>2}'.format(args.year, args.day)
     script_name = base_name + '.py'
     input_name = base_name + '_input.txt'
 
