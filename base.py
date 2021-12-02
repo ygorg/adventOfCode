@@ -44,7 +44,7 @@ class First(Base):
         }
 
     def pre_treat(self, inp_):
-        return inp_.split('\n')
+        return [l for l in inp_.split('\\n') if l]
 
     def _solve(self, inp_):
         inp_ = self.pre_treat(inp_)
