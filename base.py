@@ -59,7 +59,7 @@ class Second(First):
         }
 
     def _solve(self, inp_):
-        inp_ = First.pre_treat(self, inp_)
+        inp_ = self.pre_treat(inp_)
         pass
 
 
